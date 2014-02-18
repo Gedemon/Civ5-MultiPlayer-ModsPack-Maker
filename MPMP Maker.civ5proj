@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Deploy" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <ProjectGuid>{b6d84480-926e-4c60-9783-e34268e7d8d3}</ProjectGuid>
+    <Name>MultiPlayer ModsPack Maker</Name>
+    <Guid>c70dee73-8179-4a19-a3e5-1d931908ff43</Guid>
+    <ModVersion>1</ModVersion>
+    <Stability>Alpha</Stability>
+    <Teaser>Create a modspack in the DLC folder to be used in multiplayer</Teaser>
+    <Description>This mod will create a modspack containing all currently activated mods in the DLC folder so it can be used in multiplayer.
+
+DLL mods are not compatible.</Description>
+    <Authors>Gedemon</Authors>
+    <SpecialThanks>
+    </SpecialThanks>
+    <AffectsSavedGames>true</AffectsSavedGames>
+    <MinCompatibleSaveVersion>0</MinCompatibleSaveVersion>
+    <SupportsSinglePlayer>true</SupportsSinglePlayer>
+    <SupportsMultiplayer>true</SupportsMultiplayer>
+    <SupportsHotSeat>true</SupportsHotSeat>
+    <SupportsMac>true</SupportsMac>
+    <AssemblyName>DB to XML</AssemblyName>
+    <RootNamespace>DB to XML</RootNamespace>
+    <ModReferences />
+    <ModContent>
+      <Content xmlns="">
+        <Type>InGameUIAddin</Type>
+        <Name>MPMP Maker</Name>
+        <Description>MPMP Maker</Description>
+        <FileName>MPMP_Maker.lua</FileName>
+      </Content>
+    </ModContent>
+    <ModActions>
+      <Action xmlns="">
+        <Set>OnGetDLLPath</Set>
+        <Type>SetDllPath</Type>
+        <FileName>CvGameCore_MPMPMaker.dll</FileName>
+      </Action>
+    </ModActions>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Package Only' ">
+    <PackageMod>true</PackageMod>
+    <DeployMod>false</DeployMod>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Deploy Only' ">
+    <PackageMod>false</PackageMod>
+    <DeployMod>true</DeployMod>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="CvGameCore_MPMPMaker.dll">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="MPMP_Maker.lua">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Firaxis\ModBuddy\Civ5Mod.targets" />
+</Project>
