@@ -24,7 +24,6 @@
 		- create a "desinstall" mod with a copy of all UI files that are loaded in the MPModspack so that they can be removed if that mod is activated (they should override the DLC UI files). That "MPModpack desinstallation" mod would be deleted/recreated each time a MP modspack is created
 		- then make sure we are not copying in the DLC folder some files that can't be loaded with mods !
 		- create a small additional DLC (optional installation, as this one would require manual desinstallation) to handle automatically the launch of a small game session to configure the MP Modspack when entering the mod's menu
-		- artdefines for everything, not just unit (try a direct DB copy first <- maybe this would work too for units...)
 		- the UI...
 		- handle DLL mods that may need renaming (see also limitations as a DLL with the mandatory Game function must be loaded)
 
