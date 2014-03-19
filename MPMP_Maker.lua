@@ -75,6 +75,14 @@ local structureToIgnore = {
 	["Audio_SpeakerChannels"] = true,
 }
 
+local audioTableListe = {
+	"Audio_2DSounds",
+	"Audio_3DSounds",
+	"Audio_SoundScapeElementScripts",
+	"Audio_SoundScapeElements",
+	"Audio_SoundScapes",
+	"Audio_Sounds",
+}
 
 function CreateMP()
 
@@ -89,6 +97,9 @@ function CreateMP()
 
 	print2 ("Getting Texts...")
 	CopyTextDatabase()
+
+	print2 ("Getting Audio Tables...")
+	CopyAudioDatabase()
 	
 	print2 ("Copying Activated Mods...")
 	CopyActivatedMods()
@@ -235,7 +246,7 @@ function CopyTextDatabase()
 	for result in DB.Query(query) do
 		if not (string.find(tostring(result.Tag), "TURN_REMINDER_EMAIL")) then -- to do : encode the HTML tags in those strings...
 			sDatabase = "		<Replace Tag=\"".. tostring(result.Tag) .."\"> \n"
-			sDatabase = sDatabase .. "			<Text>\n				".. result.Text .."\n			</Text>\n"
+			sDatabase = sDatabase .. "			<Text>\n				".. tostring(result.Text) .."\n			</Text>\n"
 			sDatabase = sDatabase .. "		</Replace>"
 			Game.WriteMPMP( textFileName, sDatabase, false)
 		end
