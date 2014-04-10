@@ -92,6 +92,9 @@ function CreateMP()
 	print2 ("Creating New ModPack folder...")
 	Game.CreateMPMP()
 	
+	print2 ("Copying Activated Mods...")
+	CopyActivatedMods()
+	
 	print2 ("Getting the Database...")
 	CopyFullDatabase()
 
@@ -100,9 +103,6 @@ function CreateMP()
 
 	print2 ("Getting Audio Tables...")
 	CopyAudioDatabase()
-	
-	print2 ("Copying Activated Mods...")
-	CopyActivatedMods()
 	
 	--ContextPtr:LookUpControl("/InGame/TopPanel/TopPanelInfoStack"):SetHide( false )
 
