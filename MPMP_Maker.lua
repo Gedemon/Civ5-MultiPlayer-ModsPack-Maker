@@ -105,7 +105,8 @@ function CreateMP()
 	CopyAudioDatabase()
 	
 	--ContextPtr:LookUpControl("/InGame/TopPanel/TopPanelInfoStack"):SetHide( false )
-
+	
+	print2 ("MP_MODSPACK Done !")
 end
 
 function GetTablesStructure(tableName)
@@ -211,7 +212,7 @@ function CopyAudioDatabase()
 		local structure = DB.CreateQuery(query)
 
 		sDatabase = "	<".. tostring(tableName) ..">"		
-		Game.WriteMPMP( LastGamePlayFileName, sDatabase, false)
+		Game.WriteMPMP( AudioFileName, sDatabase, false)
 
 		local columns = {}
 		for c in structure() do			
@@ -227,14 +228,14 @@ function CopyAudioDatabase()
 				if valueStr:len() > 0 and valueStr ~= "nil" then sDatabase = sDatabase .. "			<".. col.Name ..">".. valueStr .."</".. col.Name .."> \n" end
 			end
 			sDatabase = sDatabase .. "		</Row>"
-			Game.WriteMPMP( LastGamePlayFileName, sDatabase, false)
+			Game.WriteMPMP( AudioFileName, sDatabase, false)
 		end
 
 		sDatabase = "	</".. tostring(tableName) .."> \n"
-		Game.WriteMPMP( LastGamePlayFileName, sDatabase, false)
+		Game.WriteMPMP( AudioFileName, sDatabase, false)
 		sDatabase = ""
 	end
-	Game.WriteMPMP( LastGamePlayFileName, "</GameData> \n", false)
+	Game.WriteMPMP( AudioFileName, "</GameData> \n", false)
 
 end
 
